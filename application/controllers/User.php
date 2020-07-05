@@ -33,7 +33,12 @@ class User extends CI_Controller
 
         $this->load->view('templates/header', $data);
         $this->load->view('parts/nav', $data);
-        $this->load->view('admin/user/show', $data);
+        if ($id==null or $data['user']==null) {
+            $this->load->view('error');
+        }else{
+            $this->load->view('admin/user/show', $data);
+        }
+
         $this->load->view('templates/footer');
     }
 

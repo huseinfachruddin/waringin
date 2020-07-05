@@ -37,15 +37,15 @@ class Order extends CI_Controller {
 		$this->load->view('templates/footer');
 	}
 
-	public function coba()
+	public function store()
 	{
-		$data['title']="Waringin | Online Store";
-
 		$set = ['date'=> date()
             ];
 
 		$hasil=$this->_order->crate_order($set);
-		var_dump($hasil);
+		
+		$this->session->set_flashdata('message','<div class="alert alert-success">Data berhasil di upload!</div>');
+		redirect('product');
 	}
 	public function delete($id=null)
 	{

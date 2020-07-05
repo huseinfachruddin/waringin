@@ -26,7 +26,8 @@ class Product extends CI_Controller
         $this->load->view('admin/product/index', $data);
         $this->load->view('templates/footer');
     }
-    function show($id=null){
+    public function show($id=null){
+
         $data['product'] = $this->_product->show($id);
         $data['category'] = $this->db->get('category')->result();
 
@@ -34,8 +35,13 @@ class Product extends CI_Controller
 
         $this->load->view('templates/header', $data);
         $this->load->view('parts/nav', $data);
+        if ($id==null or $data['product']==null) {
+            $this->load->view('error');
+        }else{
         $this->load->view('admin/product/show', $data);
+        }
         $this->load->view('templates/footer');
+        
     }
 
     public function create()

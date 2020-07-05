@@ -61,7 +61,10 @@
                         ?>
                             <tr>
                                 <th scope="row"><?=$i?></th>
+                                <td><?=$row->id?></td>
                                 <td><?=$row->name?></td>
+                                <td><?=$row->status?></td>
+                                <td><?=$row->date?></td>
 
                                 <td>
                                     <a href="<?=base_url('order/show/'.$row->id)?>"><i class="fa fa-pencil-alt"></i></a>

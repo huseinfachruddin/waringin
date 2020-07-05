@@ -7,7 +7,8 @@ class _order extends CI_Model
     {
         $this->db->select( 'o.id as id,
                             u.name as name,
-                            date,
+                            status,
+                            date
                             ');
         $this->db->from('order as o');
         $this->db->join('cart as c', 'o.id = c.order_id','inner');
