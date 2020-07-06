@@ -16,8 +16,8 @@ class _order extends CI_Model
         $this->db->group_by('o.id');
 
         if ($key!=null) {
-            $this->db->like('p.name',$key);
-            $this->db->or_like('u.name',$key);
+            $this->db->like('u.name',$key);
+            $this->db->or_like('status',$key);
         }
         $hasil=$this->db->get()->result();
         return $hasil;
@@ -54,13 +54,6 @@ class _order extends CI_Model
         $this->db->where('order_id',$id);
 
         $hasil=$this->db->get()->result();
-        return $hasil;
-    }
-
-    public function crate_cart($id=null)
-    {
-
-        $hasil=$this->db->update('product',$set);
         return $hasil;
     }
 

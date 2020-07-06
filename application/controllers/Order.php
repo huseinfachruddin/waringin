@@ -33,7 +33,11 @@ class Order extends CI_Controller {
 		$data['cart'] = $this->_order->show_cart($id);
 
 		$this->load->view('templates/header',$data);
-		$this->load->view('admin/order/show',$data);
+		if ($id==null or $data['order']['id']==null) {
+            $this->load->view('error');
+        }else{
+			$this->load->view('admin/order/show',$data);
+        }
 		$this->load->view('templates/footer');
 	}
 

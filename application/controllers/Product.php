@@ -35,7 +35,7 @@ class Product extends CI_Controller
 
         $this->load->view('templates/header', $data);
         $this->load->view('parts/nav', $data);
-        if ($id==null or $data['product']==null) {
+        if ($id==null or $data['product']['id']==null) {
             $this->load->view('error');
         }else{
         $this->load->view('admin/product/show', $data);
