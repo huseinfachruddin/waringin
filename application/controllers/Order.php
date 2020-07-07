@@ -41,15 +41,24 @@ class Order extends CI_Controller {
 		$this->load->view('templates/footer');
 	}
 
-	public function store()
+	public function store($id)
 	{
-		$set = ['date'=> date()
-            ];
+		$order_id=uniqid();
+		$set=[
+            'order_id'=>$order_id
+        ];
+		$this->db->update('cart', $set, array('user_id' => $id,'order_id'=>0));
 
-		$hasil=$this->_order->crate_order($set);
+		if ($this->_order->crate_order($order_id,'Pesan')==true) {
+
+			$this->session->set_flashdata('message','<div class="alert alert-success">Data berhasil di upload!</div>');
+			redirect('admin');
+		}else{
+		$hasil=$this->_order->crate_order($id);
 		
-		$this->session->set_flashdata('message','<div class="alert alert-success">Data berhasil di upload!</div>');
-		redirect('product');
+		$this->session->set_flashdata('message','<div class="alert alert-danger">Data gagal di upload!</div>');
+		redirect('admin');
+		}
 	}
 	public function delete($id=null)
 	{

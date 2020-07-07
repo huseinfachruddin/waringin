@@ -57,27 +57,17 @@ class _order extends CI_Model
         return $hasil;
     }
 
-    public function crate_order($set=null)
+    public function crate_order($id=null,$status)
     {
-        if ($this->db->insert('order',$set)==true) {
-            $this->db->order_by('id','DESC');
-            $this->db->limit(1);
-            $order=$this->db->get('order')->row_array();
-            $id=$order['id'];
-            $set = [
-                'order_id'=> $id
-            ];
-            
-            $this->db->where('order_id', '0');
-            $hasil=$this->db->update('cart',$set);
-
-        }
-        else{
-            $hasil='error';
-        }
         
-
-        return $hasil;
+            $data=[
+                'id'=>$id,
+                'status'=>$status,
+                'date'=>time()
+                
+            ];
+            $hasil=$this->db->insert('order',$data);
+            return $hasil;
     }
 
 }
