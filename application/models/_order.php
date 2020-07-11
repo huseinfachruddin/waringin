@@ -26,6 +26,8 @@ class _order extends CI_Model
     {
         $this->db->select( 'o.id as id,
                             u.name as name,
+                            u.phone as phone,
+                            u.address as address,
                             COUNT(p.id) as jumlah,
                             SUM(harga_product*amount) as total,
                             date,
@@ -49,7 +51,6 @@ class _order extends CI_Model
                             ');
         $this->db->from('cart as c');
         $this->db->join('order as o', 'c.order_id = o.id','inner');
-        $this->db->join('user as u', 'c.user_id = u.id','inner');
         $this->db->join('product as p', 'c.product_id = p.id','inner');
         $this->db->where('order_id',$id);
 
@@ -69,5 +70,6 @@ class _order extends CI_Model
             $hasil=$this->db->insert('order',$data);
             return $hasil;
     }
+
 
 }

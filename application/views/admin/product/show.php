@@ -55,16 +55,8 @@
                             
                          </div>
                         <div class="form-group">
-                            <label>Harga Normal/Ecer</label>
+                            <label>Harga </label>
                             <input type="number" class="form-control" id="name" placeholder="~RP" name="harga_ecer" value="<?=$product['harga_ecer']?>">
-                        </div>
-                        <div class="form-group">
-                            <label>Harga Member</label>
-                            <input type="number" class="form-control" id="name" placeholder="~RP" name="harga_member" value="<?=$product['harga_member']?>">
-                        </div>
-                        <div class="form-group">
-                            <label>Harga Grosir</label>
-                            <input type="number" class="form-control" id="name" placeholder="~RP" name="harga_grosir" value="<?=$product['harga_grosir']?>">
                         </div>
                     
                 </div>

@@ -10,7 +10,7 @@
                 </div>
                 
                 <div class="modal-body">
-                <?php echo form_open_multipart('product/store');?>
+                <?php echo form_open_multipart('');?>
                     <div class="modal-content p-3">
                     <div class="form-group ">
                     <label>image</label>
@@ -23,7 +23,7 @@
                     </div>
                         <div class="form-group">
                             <label>Nama Produk</label>
-                            <input type="text" class="form-control" id="name" placeholder="Product Name" name="name">
+                            <input type="text" class="form-control" id="name" placeholder="Product Name" name="name" value="<?= set_value('name'); ?>">
                         </div>
                         <div class="form-group">
                             <label for="type">Pilih Tipe</label>
@@ -54,16 +54,8 @@
                             
                          </div>
                         <div class="form-group">
-                            <label>Harga Normal/Ecer</label>
+                            <label>Harga</label>
                             <input type="number" class="form-control" id="name" placeholder="~RP" name="harga_ecer">
-                        </div>
-                        <div class="form-group">
-                            <label>Harga Member</label>
-                            <input type="number" class="form-control" id="name" placeholder="~RP" name="harga_member">
-                        </div>
-                        <div class="form-group">
-                            <label>Harga Grosir</label>
-                            <input type="number" class="form-control" id="name" placeholder="~RP" name="harga_grosir">
                         </div>
                     
                 </div>

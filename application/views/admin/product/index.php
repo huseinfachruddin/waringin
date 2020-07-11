@@ -35,8 +35,8 @@
                                 <th scope="row"><?=$i?></th>
                                 <td><?=$row->name?></td>
                                 <td><?=$row->category?></td>
-                                <td><?=$row->harga_ecer?></td>
-                                <td><?=$row->harga_member?></td>
+                                <td><?=$row->harga?></td>
+
                                 <td>
                                 
                                     <a href="<?=base_url('product/show/'.$row->id)?>"><i class="fa fa-pencil-alt"></i></a>

@@ -83,10 +83,10 @@ class Auth extends CI_Controller
        {
            $time=time();
            $data = [
+               'id' => 'U-'.uniqid(),
                'name'=> htmlspecialchars($this->input->post('name', true)),
                'email'=> htmlspecialchars($this->input->post('email', true)),
                'password'=> password_hash($this->input->post('password'),PASSWORD_DEFAULT),
-			   'phone'=> $time,
 			   'img'=> 'default.png',
 			   'role_id' => 2,
                'date_created'=>date('Y-m-d',$time)

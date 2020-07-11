@@ -32,7 +32,7 @@
 						?>
                             <tr>
                                 <th scope="row"><?=$i?></th>
-                                <td><?=$row->name?></td>
+                                <td><?= cetak($row->name)?></td>
                                 <td><?=$row->email?></td>
                                 <td><?=$row->role?></td>
                                 <td>

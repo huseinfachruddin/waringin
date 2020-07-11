@@ -48,33 +48,51 @@ class Product extends CI_Controller
     {
         $data['user'] = $this->db->get_where('user',['id'=> $this->session->userdata('id')])->row_array();
         $data['category'] = $this->db->get('category')->result();
-        
+        // validation
+        $validation = $this->form_validation;
+        $validation->set_rules($this->_product->rules());
+
         $data['title']="upload product | Waringin";
-       
+        $validation = $this->form_validation;
+        $validation->set_rules($this->_product->rules());
+        if ($validation->run()==false) {
         $this->load->view('templates/header', $data);
         $this->load->view('parts/nav', $data);
         $this->load->view('admin/product/create', $data);
         $this->load->view('templates/footer');
+        }else{
+        redirect('product/store');
+        }
     }
 
     public function store()
     {
-        $image=$_FILES['img'];
-        $back='product/create';
-        $img_name = $this->image($image,$back); 
-            $set = [
-                'img'=> $img_name,
-                'name'=> $this->input->post('name', true),
-                'detail'=> $this->input->post('ckeditor', true),
-                'category_id'=> $this->input->post('category', true),
-                'harga_ecer'=> $this->input->post('harga_ecer', true),
-                'harga_member'=> $this->input->post('harga_member', true),
-                'harga_grosir'=> $this->input->post('harga_grosir', true),
-            ];
-            $this->db->insert('product',$set);
+        $validation = $this->form_validation;
+        $validation->set_rules($this->_product->rules());
+        if ($validation->run()==true) {
             
-            $this->session->set_flashdata('message','<div class="alert alert-success">Data berhasil di upload!</div>');
-            redirect('product');
+            $image=$_FILES['img'];
+            $back='product/create';
+            $img_name = $this->image($image,$back); 
+                $set = [
+                    'img'=> $img_name,
+                    'name'=> $this->input->post('name', true),
+                    'detail'=> $this->input->post('ckeditor', true),
+                    'category_id'=> $this->input->post('category', true),
+                    'harga_ecer'=> $this->input->post('harga_ecer', true),
+                    'harga_member'=> $this->input->post('harga_member', true),
+                    'harga_grosir'=> $this->input->post('harga_grosir', true),
+                ];
+                $this->db->insert('product',$set);
+                
+                $this->session->set_flashdata('message','<div class="alert alert-success">Data berhasil di upload!</div>');
+                redirect('product');
+        }else{
+            $eror = validation_errors('<div class="alert alert-danger alert-dismissible fade show col-12" role="alert">', '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+            $this->session->set_flashdata('message',$eror);
+            var_dump(set_value('name'));
+            redirect('product/create');
+        }
     }
     public function update($id=null)
     {
@@ -148,7 +166,6 @@ class Product extends CI_Controller
                 'source_image'  => './assets/images/'.$file_name,
                 'maintain_ratio'=> false,
                 'width'         => 500,
-                'height'        => 300,
                 'new_image'     => './assets/images/tumb/'.$file_name
         );
  

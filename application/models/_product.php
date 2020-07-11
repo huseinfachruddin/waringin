@@ -3,13 +3,28 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class _product extends CI_Model
 {
+    public function rules()
+{
+    return [
+        ['field' => 'name',
+        'label' => 'Name',
+        'rules' => 'required'],
+
+        ['field' => 'harga',
+        'label' => 'Harga',
+        'rules' => 'numeric|required'],
+        
+        ['field' => 'detail',
+        'label' => 'Detail',
+        'rules' => 'required']
+    ];
+}
     public function get($key=null)
     {
         $this->db->select( 'p.id as id,
                             p.name as name,
-                            harga_ecer,
-                            harga_member,
-                            harga_grosir,
+                            harga,
+                            satuan,
                             category_id,
                             c.name as category
                             ');
@@ -28,9 +43,8 @@ class _product extends CI_Model
                             p.name as name,
                             detail,
                             img,
-                            harga_ecer,
-                            harga_member,
-                            harga_grosir,
+                            harga,
+                            satuan,
                             category_id,
                             c.name as category,
                             ');
