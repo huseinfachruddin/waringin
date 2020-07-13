@@ -3,6 +3,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class _order extends CI_Model 
 {
+
+    public function rules()
+    {
+        return [
+            ['field' => 'phone',
+            'label' => 'Nomer telepon',
+            'rules' => 'required|numeric'],
+    
+            ['field' => 'address',
+            'label' => 'Alamat',
+            'rules' => 'required']
+        ];
+    }
+
     public function get($key=null)
     {
         $this->db->select( 'o.id as id,
@@ -68,6 +82,11 @@ class _order extends CI_Model
                 
             ];
             $hasil=$this->db->insert('order',$data);
+            return $hasil;
+    }
+    public function crate_cart()
+    {
+            $hasil=$this->db->insert('cart',$data);
             return $hasil;
     }
 

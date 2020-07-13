@@ -55,7 +55,11 @@
                          </div>
                         <div class="form-group">
                             <label>Harga</label>
-                            <input type="number" class="form-control" id="name" placeholder="~RP" name="harga_ecer">
+                            <input type="text" class="form-control" id="name" placeholder="~RP" name="harga">
+                        </div>
+                        <div class="form-group">
+                            <label>satuan</label>
+                            <input type="text" class="form-control" id="name" placeholder="~RP" name="satuan">
                         </div>
                     
                 </div>

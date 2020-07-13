@@ -89,7 +89,7 @@ class Auth extends CI_Controller
                'password'=> password_hash($this->input->post('password'),PASSWORD_DEFAULT),
 			   'img'=> 'default.png',
 			   'role_id' => 2,
-               'date_created'=>date('Y-m-d',$time)
+               'date'=>date('Y-m-d H:i:s',$time)
            ];
            
            $this->db->insert('user',$data);

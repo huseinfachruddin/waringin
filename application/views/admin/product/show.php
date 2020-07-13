@@ -56,7 +56,7 @@
                          </div>
                         <div class="form-group">
                             <label>Harga </label>
-                            <input type="number" class="form-control" id="name" placeholder="~RP" name="harga_ecer" value="<?=$product['harga_ecer']?>">
+                            <input type="text" class="form-control" id="name" placeholder="~RP" name="harga_ecer" value="<?=$product['harga']?>">
                         </div>
                     
                 </div>

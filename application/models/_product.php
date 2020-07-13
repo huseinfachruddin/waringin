@@ -12,7 +12,11 @@ class _product extends CI_Model
 
         ['field' => 'harga',
         'label' => 'Harga',
-        'rules' => 'numeric|required'],
+        'rules' => 'required|numeric'],
+
+        ['field' => 'satuan',
+        'label' => 'Satuan',
+        'rules' => 'required'],
         
         ['field' => 'detail',
         'label' => 'Detail',
