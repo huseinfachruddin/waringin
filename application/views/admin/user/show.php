@@ -1,38 +1,52 @@
+<div class="content">
+    <?= $this->session->flashdata('message');?>
+        <div class="container-fluid mt-3">
+          <div class="row">
+          
+          <div class="col-md-4">
+              <div class="card card-profile">
+                <div class="card-avatar">
 
-    <div class="container" style="margin-top: 80px;">
-        <div class="row bg-content mt-3 ">
-        <?= $this->session->flashdata('message');?>
-            <div class="card-big">
-                <div class="card-header border-bottom border-custom">
-                    <h3><strong style="color: rgb(255, 153, 0);"> user</strong> > <?=$user['name']?></h3>
+                    <img id="blah" class="" src="<?=base_url('assets/images/').$user['img']?>" />
+ 
                 </div>
-                <div class="modal-body">
-                <?php echo form_open_multipart('user/update/'.$user['id']);?>
-                    <div class="modal-content p-3">
-                    <div class="form-group ">
-                    <label>image</label>
-                        <div class="col-md-5 mx-auto">
-                        <img id="blah" src="<?=base_url('assets/images/'.$user['img'])?>" alt="your image" class="m-a w-100"/>
-                        </div>
-                        <div class="col-md-5 mx-auto">
-                        Ganti Image
-                        <input name="img" type="file" id="inputEmail" class="form-control border border-success" onchange="readURL(this);">
-                        </div>
-                    </div>
+                <div class="card-body">
+                <div class="custom-file">
+                    <?php echo form_open_multipart('user/update/'.$user['id']);?>
+                    <label class="btn btn-primary btn-round" for="inputFile">Upload</label>
+                    <input type="file" class="custom-file-input display-none" id="inputFile" name="img" onchange="readURL(this);"></input>
+                </div>
+              </div>
+              </div>
+            </div>
+
+            <div class="col-md-8">
+              <div class="card">
+                <div class="card-header card-header-primary">
+                  <h4 class="card-title">Edit Profile</h4>
+                  <p class="card-category"></p>
+                </div>
+                <div class="card-body m-3">
+                
+                    <div class="row">
+                      <div class="col-md-3">
                         <div class="form-group">
-                            <label>Nama</label>
-                            <input type="text" class="form-control" id="name" placeholder="" name="name" value="<?=$user['name']?>">
+                          <label class="bmd-label-floating">Username</label>
+                          <input type="text" class="form-control" name="name" value="<?=$user['name']?>">
                         </div>
+                      </div>
+                      <div class="col-md-4">
                         <div class="form-group">
-                            <label>Email</label>
-                            <input type="text" class="form-control" id="name" placeholder="" name="email" value="<?=$user['email']?>">
+                          <label class="bmd-label-floating">Email address</label>
+                          <input type="email" class="form-control" name="email" value="<?=$user['email']?>">
                         </div>
+                      </div>
+                      </div>
+                    <div class="row">
+                        <div class="col-md-4">
                         <div class="form-group">
-                            <label for="type">role</label>
-                            <div class="row">
-                                <div class="col-8">
-                                    
-                                    <select class="form-control" id="type" name="role">
+                          <label class="bmd-label-floating">Role</label>
+                          <select class="form-control" id="type" name="role">
                                         <option value="<?=$user['role_id']?>"><?=$user['role']?></option>
                                         <?php
                                         foreach ($role as $row)
@@ -43,43 +57,49 @@
                                         }
                                         ?>
                                         
-                                    </select>
-                                </div>
-                                
-                                    
-                                
-                            
-                                </div>
-                            </div>
-                        
-                        <div class="form-group">
-                            <label>Alamat</label>
-                            <input type="text" class="form-control" id="name" placeholder="" name="address" value="<?=$user['address']?>">
+                        </select>
                         </div>
+                      </div>
+                    </div>
+                    
+                    <div class="row">
+                      <div class="col-md-12">
                         <div class="form-group">
-                            <label>Phone</label>
-                            <input type="" class="form-control" id="name" placeholder="~RP" name="phone" value="<?=$user['phone']?>">
+                          <label class="bmd-label-floating">Adress</label>
+                          <input type="text" value="<?=$user['address']?>" name="address" class="form-control">
                         </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
                         <div class="form-group">
-                            <label>Password</label>
-                            <input type="password" class="form-control" id="name" placeholder="~RP" name="password" value="<?=$user['password']?>">
+                          <label class="bmd-label-floating">Phone</label>
+                          <input type="text" value="<?=$user['phone']?>" name="Phone" class="form-control">
                         </div>
-                        <a data-toggle="modal" data-target="#addTypeModal">
+                      </div>
+                    </div>
+                    <a data-toggle="modal" data-target="#addTypeModal">
                                         <button class="btn btn-warning">
                                             ganti password
                                         </button>
-                        </a>
+                    </a>
+                    <button type="submit" class="btn btn-primary pull-right">Save</button>
+                    <div class="clearfix"></div>
+                  </form>
                 </div>
-                <div class="card-footer">
-                    <a href="<?=base_url('user')?>" type="submit" class="btn btn-danger">Kembali</a>
-                    <button type="submit" class="btn btn-success">Ubah</button>
-                </div>
-            </form>
+              </div>
             </div>
+
+            
             </div>
+          </div>
         </div>
-        <!--end content-->
-    </div>
+      </div>
+
+
+
+
+
 
 
     <!-- AddModal -->
@@ -89,7 +109,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="addTypeModalLabel">Tambah Tipe</h5>
+                    <h5 class="modal-title" id="addTypeModalLabel">Ubah Password</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>

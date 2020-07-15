@@ -19,6 +19,7 @@ class Product extends CI_Controller
         $key=$this->input->post('key');
         $data['product'] = $this->_product->get($key);
 
+
         $data['title']="product | Waringin";
         
         $this->load->view('templates/header', $data);
@@ -73,15 +74,15 @@ class Product extends CI_Controller
                     'id'=> 'P-'.uniqid(),
                     'img'=> $img_name, 
                     'name'=> $this->input->post('name', true),
-                    'detail'=> $this->input->post('ckeditor', true),
-                    'category_id'=> $this->input->post('category', true),
+                    'detail'=> $this->input->post('detail', true),
                     'harga'=> $this->input->post('harga', true),
                     'satuan'=> $this->input->post('satuan', true),
+                    'date'=>date('Y-m-d H:i:s',time())
                 ];
                 $this->db->insert('product',$set);
                 
                 $this->session->set_flashdata('message','<div class="alert alert-success">Data berhasil di upload!</div>');
-                redirect('product');
+                redirect('product/show/'.$set['id']);
     }
 
     public function update($id=null)
@@ -101,11 +102,11 @@ class Product extends CI_Controller
             $set = [
                 'img'=> $img_name,
                 'name'=> $this->input->post('name', true),
-                'detail'=> $this->input->post('ckeditor', true),
+                'detail'=> $this->input->post('detail', true),
                 'category_id'=> $this->input->post('category', true),
                 'harga'=> $this->input->post('harga', true),
-                'satuan'=> $this->input->post('satus', true),
-                'date'=>date('Y-m-d H:i:s',$time)
+                'satuan'=> $this->input->post('satuan', true),
+                'date'=>date('Y-m-d H:i:s',time())
             ];
             $this->db->where('id', $id);
             $this->db->update('product',$set);
@@ -178,13 +179,25 @@ class Product extends CI_Controller
 
 
     // CATEGORY LOGIC
-    function category($back=null){
+    function category($id=null){
+        $set = [
+            'category_id'=> $this->input->post('category', true)
+        ];
+        $this->db->where('id', $id);
+        $this->db->update('product',$set);
+
+        
+        $this->session->set_flashdata('message','<div class="alert alert-success">Data berhasil di upload!</div>');
+        redirect('product/show/'.$id); 
+    }
+
+    function create_category($id=null){
         $set = [
             'name'=> $this->input->post('name', true)
         ];
         $this->db->insert('category',$set);
         
         $this->session->set_flashdata('message','<div class="alert alert-success">Data berhasil di upload!</div>');
-        redirect('product/'.$back); 
+        redirect('product/show/'.$id); 
     }
 }

@@ -1,21 +1,36 @@
-<!doctype html>
+<!--
+=========================================================
+Material Dashboard - v2.1.2
+=========================================================
+
+Product Page: https://www.creative-tim.com/product/material-dashboard
+Copyright 2020 Creative Tim (https://www.creative-tim.com)
+Coded by Creative Tim
+
+=========================================================
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. -->
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-  <!-- Bootstrap CSS -->
-  <script src="https://kit.fontawesome.com/cb4de1fc9b.js" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <link rel="stylesheet" href="<?=base_url('assets/')?>style.css">
-  <link rel="stylesheet" href="<?=base_url('assets/')?>sidenav.css">
-
-  <title><?=$title?></title>
-  <script>$('#myModal').on('shown.bs.modal', function () {
-      $('#myInput').trigger('focus')
-    })</script>
-    <script src="//cdn.ckeditor.com/4.7.0/standard/ckeditor.js"></script>
+  <meta charset="utf-8" />
+  <link rel="apple-touch-icon" sizes="76x76" href="<?=base_url('assets_admin/')?>assets/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="<?=base_url('assets_admin/')?>assets/img/favicon.png">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>
+    <?=$title?>
+  </title>
+  <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
+  <!--     Fonts and icons     -->
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+  <!-- CSS Files -->
+  <link href="<?=base_url('assets_admin/')?>css/material-dashboard.css?v=2.1.2" rel="stylesheet" />
+  <!-- CSS Just for demo purpose, don't include it in your project -->
+  <link href="<?=base_url('assets_admin/')?>demo/demo.css" rel="stylesheet" />
 </head>
+<!doctype html>
+<html lang="en">
+
+<body class="">
+<div class="wrapper ">

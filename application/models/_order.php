@@ -22,16 +22,18 @@ class _order extends CI_Model
         $this->db->select( 'o.id as id,
                             u.name as name,
                             status,
-                            date
+                            o.date as date
                             ');
         $this->db->from('order as o');
         $this->db->join('cart as c', 'o.id = c.order_id','inner');
         $this->db->join('user as u', 'c.user_id = u.id','inner');
+        $this->db->order_by('o.date','DESC');
         $this->db->group_by('o.id');
 
         if ($key!=null) {
             $this->db->like('u.name',$key);
             $this->db->or_like('status',$key);
+            $this->db->or_like('o.id',$key);
         }
         $hasil=$this->db->get()->result();
         return $hasil;
@@ -39,18 +41,19 @@ class _order extends CI_Model
         public function show_order($id=null)
     {
         $this->db->select( 'o.id as id,
+                            u.id as user_id,
                             u.name as name,
                             u.phone as phone,
                             u.address as address,
                             COUNT(p.id) as jumlah,
-                            SUM(harga_product*amount) as total,
-                            date,
+                            SUM(p.harga*amount) as total,
+                            o.date,
                             ');
         $this->db->from('cart as c');
         $this->db->join('order as o', 'c.order_id = o.id','inner');
         $this->db->join('user as u', 'c.user_id = u.id','inner');
         $this->db->join('product as p', 'c.product_id = p.id','inner');
-        $this->db->where('order_id',$id);
+        $this->db->where('o.id',$id);
 
         $hasil=$this->db->get()->row_array();
         return $hasil;
@@ -58,10 +61,12 @@ class _order extends CI_Model
     public function show_cart($id=null)
     {
         $this->db->select( 'c.id as id,
+                            p.id as product_id,
                             p.name as product,
-                            harga_product,
+                            p.harga as harga_product,
+                            p.satuan as satuan,
                             amount,
-                            (harga_product*amount) as harga,
+                            (p.harga*amount) as harga,
                             ');
         $this->db->from('cart as c');
         $this->db->join('order as o', 'c.order_id = o.id','inner');

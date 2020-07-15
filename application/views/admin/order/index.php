@@ -1,57 +1,209 @@
-
-    <div class="container" style="margin-top: 80px;">
-        <div class="row bg-content mt-3">
-        <?= $this->session->flashdata('message');?>
-            <div class="card-big">
-                <div class="card-header border-bottom border-custom">
-                    <h3><strong style="color: rgb(255, 153, 0);"> Admin</strong> > User</h3>
+<div class="container-fluid mt-5">
+<div class="row">
+            <div class="col-lg-12 col-md-12">
+              <div class="card">
+                <div class="card-header card-header-tabs card-header-info">
+                  <div class="nav-tabs-navigation">
+                    <div class="nav-tabs-wrapper">
+                      <span class="nav-tabs-title">Tasks:</span>
+                      <ul class="nav nav-tabs" data-tabs="tabs">
+                        <li class="nav-item">
+                          <a class="nav-link active" href="#profile" data-toggle="tab">
+                            <i class="material-icons">shopping_cart</i> All
+                            <div class="ripple-container"></div>
+                          </a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#messages" data-toggle="tab">
+                            <i class="material-icons">fiber_new</i> Baru
+                            <div class="ripple-container"></div>
+                          </a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="#settings" data-toggle="tab">
+                            <i class="material-icons">cached</i> Proses
+                            <div class="ripple-container"></div>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
                 </div>
-                <div class="card-body col-12">
-                <form class="form-inline" method="post" action="">
-                    <input type="text" class="form-control w-75" placeholder="Cari Berdasarkan Name Atau role" aria-label="Recipient's username" aria-describedby="button-addon2" name="key">
-                <div class="input-group-append">
-                    <button class="btn btn-info" type="submit" id="button-addon2">Cari</button>
-                </div>
-                
+                <div class="card-body">
+                  <div class="tab-content">
+                    <div class="tab-pane active" id="profile">
+                    <form  method="post" action="" class="navbar-form col-8">
+                    <div class="input-group no-border">
+                        <input name="key" type="text" value="<?= $key ?>" class="form-control" placeholder="Search...">
+                        <button type="submit" class="btn btn-primary">
+                        <i class="material-icons">search</i>
+                        <div class="ripple-container"></div>
+                        </button>
+                    </div>
                 </form>
-                    <table class="table table-bordered ">
-                        <thead>
-                            <tr>
-                                <th scope="col" style="width:  5%">No</th>
-                                <th scope="col">Nama</th>
-                                <th scope="col">status</th>
-                                <th scope="col">date</th>
-                                <th scope="col" style="width: 7%">Akses</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        <?php
+                    <table class="table">
+                      <thead class=" text-primary">
+                        <th>
+                          ID
+                        </th>
+                        <th>
+                          Name
+                        </th>
+                        <th>
+                          Status
+                        </th>
+                        <th>
+                          Date
+                        </th>
+                        <th>
+                          Aksi
+                        </th>
+                      </thead>
+                      <tbody>
+                      <?php
 						$i=1;
 						foreach ($order as $row)
 						{
 						?>
-                            <tr>
-                                <th scope="row"><?=$i?></th>
-                                <td><?=$row->name?></td>
-                                <td><?=$row->status?></td>
-                                <td><?=$row->date?></td>
-                                <td>
-                                    <a href="<?=base_url('user/show/'.$row->id)?>"><i class="fa fa-pencil-alt"></i></a>
-                                    <a href="<?=base_url('user/delete/'.$row->id)?>"
-                                    onclick="return confirm('Anda yakin mau menghapus data ini ?')"
-                                    ><i style="margin-left: 10px;" class="fa fa-trash-alt" ></i></a>
-                                </td>
-                            </tr>
+                        <tr>
+                          <td>
+                          <?= cetak($row->id)?>
+                          </td>
+                          <td>
+                          <?= cetak($row->name)?>
+                          </td>
+                          <td>
+                          <?= cetak($row->status)?>
+                          </td>
+                          <td>
+                          <?= date('Y-m-d H:i:s',$row->date)?>
+                          </td>
+                          <td class="td-actions text-right">
+                          <a href="<?=base_url('order/show/').$row->id?>" type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-link btn-sm">
+                                <i class="material-icons">edit</i>
+                              </a>
+                              <a href="<?=base_url('order/delete/').$row->id?>" onclick="return confirm('Anda yakin mau menghapus data ini ?')" type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm">
+                                <i class="material-icons">close</i>
+                              </a>
+                          </td>
+                        </tr>
                         <?php
                         $i++;
 						}
 						?>
-                        </tbody>
+                      </tbody>
                     </table>
+                    </div>
+                    <div class="tab-pane" id="messages">
+                    <table class="table">
+                      <thead class=" text-primary">
+                        <th>
+                          ID
+                        </th>
+                        <th>
+                          Name
+                        </th>
+                        <th>
+                          Status
+                        </th>
+                        <th>
+                          Date
+                        </th>
+                        <th>
+                          Aksi
+                        </th>
+                      </thead>
+                      <tbody>
+                      <?php
+						$i=1;
+						foreach ($baru as $row)
+						{
+						?>
+                        <tr>
+                          <td>
+                          <?= cetak($row->id)?>
+                          </td>
+                          <td>
+                          <?= cetak($row->name)?>
+                          </td>
+                          <td>
+                          <?= cetak($row->status)?>
+                          </td>
+                          <td>
+                          <?= date('Y-m-d H:i:s',$row->date)?>
+                          </td>
+                          <td class="td-actions text-right">
+                          <a href="<?=base_url('order/show/').$row->id?>" type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-link btn-sm">
+                                <i class="material-icons">edit</i>
+                              </a>
+                              <a href="<?=base_url('order/delete/').$row->id?>" onclick="return confirm('Anda yakin mau menghapus data ini ?')" type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm">
+                                <i class="material-icons">close</i>
+                              </a>
+                          </td>
+                        </tr>
+                        <?php
+                        $i++;
+						}
+						?>
+                      </tbody>
+                    </table>
+                    </div>
+                    <div class="tab-pane" id="settings">
+                    <table class="table">
+                      <thead class=" text-primary">
+                        <th>
+                          ID
+                        </th>
+                        <th>
+                          Name
+                        </th>
+                        <th>
+                          Status
+                        </th>
+                        <th>
+                          Date
+                        </th>
+                        <th>
+                          Aksi
+                        </th>
+                      </thead>
+                      <tbody>
+                      <?php
+						$i=1;
+						foreach ($proses as $row)
+						{
+						?>
+                        <tr>
+                          <td>
+                          <?= cetak($row->id)?>
+                          </td>
+                          <td>
+                          <?= cetak($row->name)?>
+                          </td>
+                          <td>
+                          <?= cetak($row->status)?>
+                          </td>
+                          <td>
+                          <?= date('Y-m-d H:i:s',$row->date)?>
+                          </td>
+                          <td class="td-actions text-right">
+                          <a href="<?=base_url('order/show/').$row->id?>" type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-link btn-sm">
+                                <i class="material-icons">edit</i>
+                              </a>
+                              <a href="<?=base_url('order/delete/').$row->id?>" onclick="return confirm('Anda yakin mau menghapus data ini ?')" type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm">
+                                <i class="material-icons">close</i>
+                              </a>
+                          </td>
+                        </tr>
+                        <?php
+                        $i++;
+						}
+						?>
+                      </tbody>
+                    </table>
+                    </div>
+                  </div>
                 </div>
+              </div>
             </div>
-        </div>
-        <!--end content-->
     </div>
-
-    

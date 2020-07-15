@@ -1,21 +1,13 @@
 
 
-<body>
-    <div class="fixed-top">
-        <nav class="navbar navbar-expand-md navbar-dark bg-rgb26">
-            <div class="mx-auto order-0">
-                <a style="color: rgb(225, 153, 0);" class="navbar-brand mx-auto" href="#"><strong>WARINGIN
-                        ACC</strong></a>
-            </div>
-        </nav>
-    </div>
-    <div class="container" style="margin-top: 80px; margin-bottom: 80px;">
-        <div class="row bg-content mt-3 mx-auto" style="width: 50%;">
-            <div class="card-big">
-                <div class="card-header border-bottom border-custom">
-                    <h3 class="text-center"><strong style="color: rgb(255, 153, 0);">Daftar</strong></h3>
-                </div>
-                <div class="card-body ">
+    <?= $this->session->flashdata('message');?>
+    <div class="container" style="margin-top: 80px;">
+        <div class="row mt-3 d-flex justify-content-center" >
+            <div class="card-big col-8 ">
+                    <h3 class="text-center"><strong style="color: rgb(255, 153, 0);">Register</strong></h3>
+
+                <div class="card ">
+                <div class="card-body m-3">
                     <form method="post" action="<?= base_url('auth/register');?>">
                         <div class="form-group">
                             <label for="">Nama Lengkap</label>
@@ -39,15 +31,15 @@
                         <button type="submit" class="btn btn-warning">Daftar</button>
                         <p class="mt-3">Sudah memiliki akun?<a class="ml-3" href="<?=base_url('auth')?>">Masuk</a></p>
                     </form>
-                    <?php echo validation_errors('<div class="alert alert-danger alert-dismissible fade show col-12" role="alert">', '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>'); ?>
-
+                    <?php echo validation_errors('<div class="alert alert-danger">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <i class="material-icons">close</i>
+                    </button>
+                    <span>', '</span>
+                      </div>'); ?>
+                    </div>
                 </div>
             </div>
         </div>
         <!--end content-->
-    </div>
-    <!--closeContainer-->
-    <div style="color: white;" class="footer-copyright bg-rgb26 text-center py-3 fixed-bottom">© 2020 Copyright:
-        <a href="risman page">my.corp</a>
-    </div>
     </div>

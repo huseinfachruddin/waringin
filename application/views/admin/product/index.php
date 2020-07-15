@@ -1,62 +1,89 @@
 
-    <div class="container" style="margin-top: 80px;">
-        <div class="row bg-content mt-3">
+<div class="container-fluid mt-5">
+<div class="row">
         <?= $this->session->flashdata('message');?>
-            <div class="card-big">
-                <div class="card-header border-bottom border-custom">
-                    <h3><strong style="color: rgb(255, 153, 0);"> Admin</strong> > Product</h3>
+        <div class="col-md-12">
+              <div class="card">
+                <div class="card-header card-header-primary">
+                  <h4 class="card-title ">Product List</h4>
+                  <p class="card-category"> Here is a subtitle for this table</p>
                 </div>
-                <div class="card-body col-12">
-                <form class="form-inline" method="post" action="">
-                    <input type="text" class="form-control w-75" placeholder="Cari Berdasarkan Name Atau kategory" aria-label="Recipient's username" aria-describedby="button-addon2" name="key">
-                <div class="input-group-append">
-                    <button class="btn btn-info" type="submit" id="button-addon2">Cari</button>
-                </div>
-                
+                <div class="card-body">
+                  <div class="table-responsive">
+                  <form  method="post" action="" class="navbar-form col-8">
+                    <div class="input-group no-border">
+                        <input name="key" type="text" value="" class="form-control" placeholder="Search...">
+                        <button type="submit" class="btn btn-primary">
+                        <i class="material-icons">search</i>
+                        <div class="ripple-container"></div>
+                        </button>
+                    </div>
                 </form>
-                    <table class="table table-bordered ">
-                        <thead>
-                            <tr>
-                                <th scope="col" style="width:  5%">No</th>
-                                <th scope="col">Nama</th>
-                                <th scope="col">Tipe</th>
-                                <th scope="col">Harga Ecer</th>
-                                <th scope="col">Harga Grosir</th>
-                                <th scope="col" style="width: 7%">Akses</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        <?php
+                        <a href="<?=base_url('product/create')?>" class="btn btn-primary">
+                        <i class="material-icons">add</i>Add Product
+                        </a>
+                    <table class="table">
+                      <thead class=" text-primary">
+                        <th>
+                          No
+                        </th>
+                        <th>
+                          Product
+                        </th>
+                        <th>
+                          Harga
+                        </th>
+                        <th>
+                          Satuan
+                        </th>
+                        <th>
+                          Kategori
+                        </th>
+                        <th>
+                          Aksi
+                        </th>
+                      </thead>
+                      <tbody>
+                      <?php
 						$i=1;
 						foreach ($product as $row)
 						{
 						?>
-                            <tr>
-                                <th scope="row"><?=$i?></th>
-                                <td><?=$row->name?></td>
-                                <td><?=$row->category?></td>
-                                <td><?=$row->harga?></td>
-
-                                <td>
-                                
-                                    <a href="<?=base_url('product/show/'.$row->id)?>"><i class="fa fa-pencil-alt"></i></a>
-                                    <a href="<?=base_url('product/delete/'.$row->id)?>"
-                                    onclick="return confirm('Anda yakin mau menghapus data ini ?')"
-                                    ><i style="margin-left: 10px;" class="fa fa-trash-alt" ></i></a>
-                                </td>
-                            </tr>
+                        <tr>
+                          <td>
+                          <?=$i?>
+                          </td>
+                          <td>
+                          <?= cetak($row->name)?>
+                          </td>
+                          <td>
+                          <?= cetak($row->harga)?>
+                          </td>
+                          <td>
+                          <?= cetak($row->satuan)?>
+                          </td>
+                          <td>
+                          <?= cetak($row->category)?>
+                          </td>
+                          <td class="td-actions text-right">
+                          <a href="<?=base_url('product/show/').$row->id?>" type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-link btn-sm">
+                                <i class="material-icons">edit</i>
+                              </a>
+                              <a href="<?=base_url('product/delete/').$row->id?>" onclick="return confirm('Anda yakin mau menghapus data ini ?')" type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm">
+                                <i class="material-icons">close</i>
+                              </a>
+                          </td>
+                        </tr>
                         <?php
                         $i++;
 						}
 						?>
-                        </tbody>
+                      </tbody>
                     </table>
+                  </div>
                 </div>
+              </div>
             </div>
-        </div>
-        <!--end content-->
-    </div>
-
-    <a href="<?=base_url('product/create')?>" class="admin-execute">
-        <i class="fa fa-plus"></i>
-    </a>
+            </div>
+            </div>
+    

@@ -153,4 +153,11 @@ class User extends CI_Controller
         }
         
     }
+
+    function delete($id=null){
+        $this->db->where('id', $id);
+        $this->db->delete('user');
+        $this->session->set_flashdata('message','<div class="alert alert-success">Data berhasil dihapus!</div>');
+        redirect('user'); 
+    }
 }

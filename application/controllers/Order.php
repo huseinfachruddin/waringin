@@ -17,11 +17,14 @@ class Order extends CI_Controller {
 	{
 		$data['title']="Waringin | Online Store";
 
-		$key=$key=$this->input->post('key');
-		$data['order'] = $this->_order->get($key);
+		$data['key']=$key=$this->input->post('key');
+		$data['order'] = $this->_order->get($data['key']);
+		$data['baru'] = $this->_order->get('Pesan');
+        $data['proses'] = $this->_order->get('Proses');
 
 
 		$this->load->view('templates/header',$data);
+		$this->load->view('parts/nav',$data);
 		$this->load->view('admin/order/index',$data);
 		$this->load->view('templates/footer');
 	}
@@ -31,9 +34,9 @@ class Order extends CI_Controller {
 
 		$data['order'] = $this->_order->show_order($id);
 		$data['cart'] = $this->_order->show_cart($id);
-
 		$this->load->view('templates/header',$data);
-		if ($id==null or $data['order']['id']==null) {
+		$this->load->view('parts/nav',$data);
+		if ($id==null or $data['order']==null) {
             $this->load->view('error');
         }else{
 			$this->load->view('admin/order/show',$data);
@@ -43,7 +46,7 @@ class Order extends CI_Controller {
 
 	public function store($id)
 	{
-		$order_id=uniqid();
+		$order_id='O-'.uniqid();
 		$set=[
             'order_id'=>$order_id
         ];
@@ -51,12 +54,12 @@ class Order extends CI_Controller {
 
 		if ($this->_order->crate_order($order_id,'Pesan')==true) {
 
-			$this->session->set_flashdata('message','<div class="alert alert-success">Data berhasil di upload!</div>');
+			$this->session->set_flashdata('message','<div class="alert alert-success">Order Berhasil!</div>');
 			redirect('admin');
 		}else{
 		$hasil=$this->_order->crate_order($id);
 		
-		$this->session->set_flashdata('message','<div class="alert alert-danger">Data gagal di upload!</div>');
+		$this->session->set_flashdata('message','<div class="alert alert-danger">Order gagal di upload!</div>');
 		redirect('admin');
 		}
 	}
@@ -68,11 +71,11 @@ class Order extends CI_Controller {
         redirect('order');
 	}
 
-	public function drop($id=null)
+	public function drop($cart_id=null,$order_id=null)
 	{
-		$this->db->where('id', $id);
+		$this->db->where('id', $cart_id);
         $this->db->delete('cart');
         $this->session->set_flashdata('message','<div class="alert alert-success">Data berhasil dihapus!</div>');
-        redirect('order/show');
+        redirect('order/show/'.$order_id);
 	}
 }

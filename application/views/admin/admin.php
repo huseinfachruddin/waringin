@@ -1,83 +1,173 @@
 
-    <div class="container" style="margin-top: 80px;">
-        <div class="row bg-content mt-3">
-            <div class="card-big">
-                <div class="card-header border-bottom border-custom">
-                    <h3><strong style="color: rgb(255, 153, 0);"> Admin</strong> : <a class="text-white"><strong><?=$user['name']?></strong></a></h3>
-                    
-                </div>
-                <div class="card-body mx-auto">
-                    <div class="row d-flex justify-content-center">
-                        <div class="col-md-4 col-sm-4 col-4">
-                            <a href="<?=base_url('product')?>" class="text-center">
-                                <div class="card">
-                                    <div class="card-header">
-                                        <i class="fa fa-table fa-4x"></i>
-                                    </div>
-                                    <div class="card-body">
-                                        Data Product
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-md-4 col-sm-4 col-4">
-                            <a href="<?=base_url('user')?>" class="text-center">
-                                <div class="card">
-                                    <div class="card-header">
-                                        <i class="fa fa-user fa-4x"></i>
-                                    </div>
-                                    <div class="card-body">
-                                       Data member
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <!--  end row -->
-                </div>
-            </div>
-            <table class="table table-bordered " style="color:#ffff">
-                <div class="card-header border-bottom border-custom">
-                    <h3><a class="text-white"><strong>Order</strong></a></h3>
-                </div>
-                        <thead>
-                            <tr>
-                                <th scope="col" style="width:  5%">No</th>
-                                <th scope="col">Costomer</th>
-                                <th scope="col">jumlah</th>
-                                <th scope="col">total harga</th>
-                                <th scope="col">Date</th>
-                                <th scope="col" style="width: 7%">Akses</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        <?php
-                        $i=1;
-                        // if ($order=null) {
-                        //     echo 'Pesanan Kosong';
-                        // }
-                        foreach ($order as $row)
-                        {
-                        ?>
-                            <tr>
-                                <th scope="row"><?=$i?></th>
-                                <td><?=$row->id?></td>
-                                <td><?=$row->name?></td>
-                                <td><?=$row->status?></td>
-                                <td><?=$row->date?></td>
 
-                                <td>
-                                    <a href="<?=base_url('order/show/'.$row->id)?>"><i class="fa fa-pencil-alt"></i></a>
-                                    <a href="<?=base_url('order/delete/'.$row->id)?>"
-                                    onclick="return confirm('Anda yakin mau menghapus data ini ?')"
-                                    ><i style="margin-left: 10px;" class="fa fa-trash-alt" ></i></a>
-                                </td>
-                            </tr>
+      <div class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-6">
+              <div class="card card-stats">
+                <a class="card-header card-header-info card-header-icon" href="">
+                  <div class="card-icon">
+
+                    <i class="material-icons">person
+                    </i>
+
+                  </div>
+                  <p class="card-category"></p>
+                  <h3 class="card-title"><?=$user['total']?>
+                  </h3>
+                </a>
+                <div class="card-footer">
+                  <div class="stats">
+                  Total User
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+              <div class="card card-stats">
+              <a class="card-header card-header-success card-header-icon" href="">
+                  <div class="card-icon">
+                    <i class="material-icons">store</i>
+                  </div>
+                  <p class="card-category"></p>
+                  <h3 class="card-title"><?=$product['total']?></h3>
+                </a>
+                <div class="card-footer">
+                  <div class="stats">
+                    <i class="material-icons">date_range</i> Total Barang
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+              <div class="card card-stats">
+              <a class="card-header card-header-warning card-header-icon" href="">
+                  <div class="card-icon">
+                    <i class="material-icons">shopping_cart</i>
+                  </div>
+                  <p class="card-category"></p>
+                  <h3 class="card-title"><?=$order['total']?></h3>
+                </a>
+                <div class="card-footer">
+                  <div class="stats">
+                    <i class="material-icons">local_offer</i> Total Order
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+              <div class="card card-stats">
+              <a class="card-header card-header-danger card-header-icon" href="">
+                  <div class="card-icon">
+                    <i class="fa fa-gear"></i>
+                  </div>
+                  <p class="card-category"></p>
+                  <h3 class="card-title">Settings</h3>
+                </a>
+                <div class="card-footer">
+                  <div class="stats">
+                    <i class="material-icons">settings</i> Atur Website
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+
+            <div class="col-lg-8 col-md-12">
+              <div class="card">
+                <div class="card-header card-header-warning">
+                  <h4 class="card-title">Order Masuk Baru</h4>
+                  <p class="card-category"></p>
+                </div>
+                <div class="card-body table-responsive">
+                <table class="table">
+                      <thead class=" text-primary">
+                        <th>
+                          ID
+                        </th>
+                        <th>
+                          Name
+                        </th>
+                        <th>
+                          Date
+                        </th>
+                        <th>
+                          Aksi
+                        </th>
+                      </thead>
+                      <tbody>
+                      <?php
+						$i=1;
+						foreach ($baru as $row)
+						{
+						?>
+                        <tr>
+                          <td>
+                          <?= cetak($row->id)?>
+                          </td>
+                          <td>
+                          <?= cetak($row->name)?>
+                          </td>
+                          <td>
+                          <?= date('Y-m-d H:i:s',$row->date)?>
+                          </td>
+                          <td class="td-actions text-right">
+                          <a href="<?=base_url('order/show/').$row->id?>" type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-link btn-sm">
+                                <i class="material-icons">edit</i>
+                              </a>
+                              <a href="<?=base_url('order/delete/').$row->id?>" onclick="return confirm('Anda yakin mau menghapus data ini ?')" type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm">
+                                <i class="material-icons">close</i>
+                              </a>
+                          </td>
+                        </tr>
                         <?php
                         $i++;
-                        }
-                        ?>
-                        </tbody>
+						}
+						?>
+                      </tbody>
                     </table>
-            <!--end content-->
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
+      <footer class="footer">
+        <div class="container-fluid">
+          <nav class="float-left">
+            <ul>
+              <li>
+                <a href="https://www.creative-tim.com">
+                  Creative Tim
+                </a>
+              </li>
+              <li>
+                <a href="https://creative-tim.com/presentation">
+                  About Us
+                </a>
+              </li>
+              <li>
+                <a href="http://blog.creative-tim.com">
+                  Blog
+                </a>
+              </li>
+              <li>
+                <a href="https://www.creative-tim.com/license">
+                  Licenses
+                </a>
+              </li>
+            </ul>
+          </nav>
+          <div class="copyright float-right">
+            &copy;
+            <script>
+              document.write(new Date().getFullYear())
+            </script>, made with <i class="material-icons">favorite</i> by
+            <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a> for a better web.
+          </div>
+        </div>
+      </footer>
+    </div>
+
