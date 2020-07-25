@@ -2,8 +2,10 @@
     <div class="content">
     <?= $this->session->flashdata('message');?>
         <div class="container-fluid mt-3">
+          <a href="<?=base_url('product/create')?>" class="btn btn-primary">
+                        <i class="material-icons">add</i>Add Product Baru
+          </a>
           <div class="row">
-          
           <div class="col-md-4">
               <div class="card card-profile">
                 <div class="card">
@@ -57,7 +59,11 @@
                       <div class="col-md-5">
                         <div class="form-group">
                           <label class="bmd-label-floating">Satuan</label>
-                          <input type="text" value="<?=$product['satuan']?>" name="satuan" class="form-control">
+                          <select class="form-control" id="type" name="satuan">
+                                    <option ><?=$product['satuan']?></option>
+                                   <option >Ecer</option>
+                                   <option >Grosir</option>                         
+                        </select>
                         </div>
                       </div>
                     </div>

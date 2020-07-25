@@ -74,7 +74,7 @@
                       <div class="col-md-12">
                         <div class="form-group">
                           <label class="bmd-label-floating">Phone</label>
-                          <input type="text" value="<?=$user['phone']?>" name="Phone" class="form-control">
+                          <input type="text" value="<?=$user['phone']?>" name="phone" class="form-control">
                         </div>
                       </div>
                     </div>

@@ -16,8 +16,10 @@ class Product extends CI_Controller
     public function index()
     {
         $data['user'] = $this->db->get_where('user',['id'=> $this->session->userdata('id')])->row_array();
-        $key=$this->input->post('key');
-        $data['product'] = $this->_product->get($key);
+        $data['key']=$key=$this->input->post('key');
+
+
+        $data['product'] = $this->_product->get($data['key']);
 
 
         $data['title']="product | Waringin";

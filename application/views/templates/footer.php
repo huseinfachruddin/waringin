@@ -15,7 +15,7 @@
   <!--	Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
   <script src="<?=base_url('assets_admin/')?>js/plugins/bootstrap-selectpicker.js"></script>
   <!--  Plugin for the DateTimePicker, full documentation here: https://eonasdan.github.io/bootstrap-datetimepicker/ -->
-  <script src="<?=base_url('assets_admin/')?>s/plugins/bootstrap-datetimepicker.min.js"></script>
+  <script src="<?=base_url('assets_admin/')?>js/plugins/bootstrap-datetimepicker.min.js"></script>
   <!--  DataTables.net Plugin, full documentation here: https://datatables.net/  -->
   <script src="<?=base_url('assets_admin/')?>js/plugins/jquery.dataTables.min.js"></script>
   <!--	Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
@@ -41,6 +41,8 @@
   <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="<?=base_url('assets_admin/')?>js/material-dashboard.js?v=2.1.2" type="text/javascript"></script>
   <!-- Material Dashboard DEMO methods, don't include it in your project! -->
+
+  </script>
   <script src="<?=base_url('assets_admin/')?>demo/demo.js"></script>
   <script>
 $(document).ready(function() {

@@ -1,10 +1,5 @@
+ <div class="sidebar" data-color="purple" data-background-color="azure" data-image="../assets/img/sidebar-1.jpg ">
 
-    <div class="sidebar" data-color="purple" data-background-color="azure" data-image="../assets/img/sidebar-1.jpg">
-      <!--
-        Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
-
-        Tip 2: you can also add an image using data-image tag
-    -->
       <div class="logo"><a href="http://www.creative-tim.com" class="simple-text logo-normal">
           WARINGIN
         </a></div>
@@ -35,7 +30,7 @@
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="<?=base_url('Setting')?>">
+            <a class="nav-link" href="<?=base_url('settings')?>">
               <i class="material-icons">settings</i>
               <p>Settings</p>
             </a>
@@ -59,11 +54,8 @@
           <div class="collapse navbar-collapse justify-content-end">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link" href="javascript:;">
-                  <i class="material-icons">dashboard</i>
-                  <p class="d-lg-none d-md-block">
-                    Stats
-                  </p>
+                <a class="nav-link" href="<?=base_url('home')?>">
+                  <i class="material-icons">web</i>
                 </a>
               </li>
               <li class="nav-item dropdown">

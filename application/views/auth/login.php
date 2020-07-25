@@ -22,6 +22,7 @@
                         <button type="submit" class="btn btn-warning">Masuk</button>
                         <p class="mt-3">Tidak punya akun?<a class="ml-3" href="<?=base_url('auth/register')?>">Buat akun</a></p>
                     </form>
+                    <a class="ml-3" href="<?=base_url('home')?>">kembali</a>
                     <?php echo validation_errors('<div class="alert alert-danger">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                       <i class="material-icons">close</i>

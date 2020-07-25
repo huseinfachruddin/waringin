@@ -15,8 +15,8 @@ class User extends CI_Controller
     public function index()
     {
         $data['user'] = $this->db->get_where('user',['id'=> $this->session->userdata('id')])->row_array();
-        $key=$this->input->post('key');
-        $data['user'] = $this->_user->get($key);
+        $data['key']=$this->input->post('key');
+        $data['user'] = $this->_user->get($data['key']);
 
         $data['title']="User | Waringin";
        
@@ -62,7 +62,7 @@ class User extends CI_Controller
                 'email'=> $this->input->post('email', true),
                 'role_id'=> $this->input->post('role', true),
                 'address'=> $this->input->post('address', true),
-                'phone'=> $this->input->post('phone', true),
+                'phone'=> $this->input->post('phone', true)
             ];
             $this->db->where('id', $id);
             $this->db->update('user',$set);

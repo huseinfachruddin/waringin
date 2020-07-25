@@ -27,6 +27,7 @@ class _product extends CI_Model
     {
         $this->db->select( 'p.id as id,
                             p.name as name,
+                            img,
                             harga,
                             satuan,
                             category_id,
@@ -37,10 +38,14 @@ class _product extends CI_Model
         if ($key!=null) {
             $this->db->like('p.name',$key);
             $this->db->or_like('c.name',$key);
+            $this->db->or_like('satuan',$key);
         }
+        $this->db->order_by('date','DESC');
         $hasil=$this->db->get()->result();
         return $hasil;
     }
+
+
     public function show($id=null)
     {
         $this->db->select( 'p.id as id,
@@ -58,4 +63,5 @@ class _product extends CI_Model
         $hasil=$this->db->get()->row_array();
         return $hasil;
     }
+
 }

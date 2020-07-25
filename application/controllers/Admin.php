@@ -10,7 +10,6 @@ class Admin extends CI_Controller
         $this->load->model('_order');
         $this->load->model('_user');
         $this->load->model('_product');
-        $this->load->model('_dashboard');
         $this->load->library('form_validation');
         if($this->session->userdata('role_id')!=1){
 			redirect('auth');
@@ -28,7 +27,13 @@ class Admin extends CI_Controller
         $data['order'] = $this->db->get('order')->row_array();
         $this->db->select('count(id) as total');
         $data['user'] = $this->db->get('user')->row_array();
-        
+        $this->db->select('count(id) as total');
+        $data['ecer'] = $this->db->get_where('product', array('satuan' => "Ecer"))->row_array();;
+        $this->db->select('count(id) as total');
+        $data['grosir'] = $this->db->get_where('product', array('satuan' => "Grosir"))->row_array();
+
+        $data['category'] = $this->db->get('category')->result();
+
         $data['baru'] = $this->_order->get('Pesan');
 
         $this->load->view('templates/header', $data);
@@ -52,5 +57,13 @@ class Admin extends CI_Controller
         $this->session->set_flashdata('message',$eror);
         redirect('product/'.$back);
         }
+    }
+    function delete_category($id=null){
+
+            $this->db->where('id', $id);
+            $this->db->delete('category');
+            $this->session->set_flashdata('message','<div class="alert alert-success">Data berhasil dihapus!</div>');
+            redirect('admin'); 
+        
     }
 }

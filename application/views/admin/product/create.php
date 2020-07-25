@@ -56,8 +56,10 @@
                       <div class="col-md-5">
                         <div class="form-group">
                           <label class="bmd-label-floating">Satuan</label>
-                          <input type="text" value="<?= set_value('satuan')?>" name="satuan" class="form-control">
-                        </div>
+                          <select class="form-control" id="type" name="satuan">
+                                   <option >Ecer</option>
+                                   <option >Grosir</option>                         
+                        </select>                        </div>
                       </div>
                     </div>
 

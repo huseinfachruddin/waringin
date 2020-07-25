@@ -2,10 +2,28 @@
 <div class="row">
 <div class="col-lg-12 col-md-12">
               <div class="card">
+                
+              <form  method="post" action="<?=base_url('order/update/'.$order['id'])?>" class="navbar-form col-8 mb-5">
+              <h3>STATUS : </h3>
+                    <div class="input-group col-5">
+                          <select class="form-control" id="type" name="status">
+                                   <option ><?= $order['status']?></option>
+                                   <option >Pesan</option>
+                                   <option >Proses</option>                         
+                        </select> 
+                        <button type="submit" class="btn btn-success btn-round p-0 btn-just-icon">
+                        <i class="material-icons">check</i>
+                        <div class="ripple-container"></div>
+                        </button>
+                    </div>
+                </form>
                 <div class="card-header card-header-warning">
                   <a href="<?=base_url('user/show/'.$order['user_id'])?>"><h3 class="card-title"><?= $order['name'];?></h3></a>
                   <h4 class="card-title">ID ORDER = <?= $order['id'];?></h4>
-                  <a class="btn btn-success btn-round btn-just-icon pull-right"href="tel:<?=$order['phone']?>"><i class="material-icons">call</i></a>
+                  <h5>Alamat  :</h5>
+                  <p><?= $order['address'];?></p>
+                 
+                <a class="btn btn-success btn-round btn-just-icon pull-right"href="tel:<?=$order['phone']?>"><i class="material-icons">call</i></a>
                 </div>
                 <div class="card-body table-responsive">
                 <table class="table">

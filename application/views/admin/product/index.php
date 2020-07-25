@@ -12,7 +12,7 @@
                   <div class="table-responsive">
                   <form  method="post" action="" class="navbar-form col-8">
                     <div class="input-group no-border">
-                        <input name="key" type="text" value="" class="form-control" placeholder="Search...">
+                        <input name="key" type="text" value="<?=$key?>" class="form-control" placeholder="Search...">
                         <button type="submit" class="btn btn-primary">
                         <i class="material-icons">search</i>
                         <div class="ripple-container"></div>

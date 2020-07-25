@@ -63,6 +63,18 @@ class Order extends CI_Controller {
 		redirect('admin');
 		}
 	}
+
+	public function update($order_id=null)
+	{
+		$set=[
+            'status'=>$this->input->post('status')
+        ];
+		$this->db->update('order', $set, array('id' => $order_id));
+		
+		$this->session->set_flashdata('message','<div class="alert alert-danger">Order gagal di upload!</div>');
+		redirect('order/show/'.$order_id);
+		
+	}
 	public function delete($id=null)
 	{
 		$this->db->where('id', $id);

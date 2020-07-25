@@ -9,6 +9,7 @@ Coded by Creative Tim
 
 =========================================================
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. -->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,5 +33,5 @@ The above copyright notice and this permission notice shall be included in all c
 <!doctype html>
 <html lang="en">
 
-<body class="">
-<div class="wrapper ">
+<body>
+<div class="wrapper">
