@@ -79,12 +79,12 @@
                       </tbody>
                     </table>
                     
-                    <h3>Total = <?= uang($order['total'])?></h3>
-                    <a href="<?=base_url('pemesanan/store/')?>" class="btn btn-success pull-right">
-                      <i class="material-icons">shopping_cart</i> Lakukan Pemesanan
-                  </a>
+                  </div>
+                  <h3>Total = <?= uang($order['total'])?></h3>
+                  <a href="<?=base_url('pemesanan/store/')?>" class="btn btn-success pull-right">
+                    <i class="material-icons">shopping_cart</i> Lakukan Pemesanan
+                </a>
                 </div>
-              </div>
             </div>
           </div>
         </div>

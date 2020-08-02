@@ -64,7 +64,14 @@ class Pemesanan extends CI_Controller {
 
 	public function store()
 	{
-		$data['user'] =$this->db->get_where('user', array('id' =>  $this->session->userdata('id')))->row_array();
+	$data['user'] =$this->db->get_where('user', array('id' =>  $this->session->userdata('id')))->row_array();
+	if ($this->db->get_where('cart', array('user_id' => $data['user']['id'],'order_id'=>'0'))==null	) {
+			$this->session->set_flashdata('message','<div class="alert alert-danger">Cart kosong!</div>');
+
+			var_dump($this->db->get_where('cart', array('user_id' => $data['user']['id'],'order_id'=>'0')));
+
+			redirect('pemesanan');
+		}
 	if ($data['user']['address']=='' && $data['user']['address']==null) {
 		$this->session->set_flashdata('message','<div class="alert alert-danger">Lengkapi Alamat Anda!</div>');
 		redirect('profile');
@@ -99,7 +106,7 @@ class Pemesanan extends CI_Controller {
 
 		$this->db->where('id', $cart_id);
         $this->db->update('cart',$set);
-        $this->session->set_flashdata('message','<div class="alert alert-success">Data berhasil dihapus!</div>');
+        $this->session->set_flashdata('message','<div class="alert alert-success">Data berhasil ubah!</div>');
         redirect('pemesanan');
 	}
 

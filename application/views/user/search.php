@@ -2,9 +2,6 @@
 <div class="container-fluid mt-5">
 <?= $this->session->flashdata('message');?>
 
-<div class="row shadow">
-<div id="carouselExampleIndicators" class="carousel slide w-100" data-ride="carousel">
-
 
 <div class="container mt-2">
 <div class="row d-flex justify-content-center card-header">
@@ -19,21 +16,19 @@
   </form>
   </div>
   </div>
+  </div>
 <div class="container-fluid mt-1 ">
-<div class="row d-flex ">
+<div class="row">
         <div class="card  col-md-3" style="background:#ffff;">
                 <div class="card-header card-header-info">
                   <h4 class="card-title ">Category</h4>
                   <p class="card-category"> Product Terpopuler</p>
                 </div>
-                <div class="card-body">
+                <div class="card-body h-100">
                 <?php foreach ($category as $row){?>
-                <a  href="<?=base_url('category')?>" class="btn btn-outline-info p-1"><?= $row->name ?></a>
+                  <a  href="<?=base_url('home/category/'.$row->id)?>" class="btn btn-outline-info p-1"><?= $row->name ?></a>
                 <?php }?>
-                <div class="row d-flex justify-content-start mt-3">
-                
 
-                  </div>
                 </div>
               </div>
 

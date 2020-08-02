@@ -45,7 +45,24 @@ class _product extends CI_Model
         return $hasil;
     }
 
+    public function getByCategory($key=null)
+    {
+        $this->db->select( 'p.id as id,
+                            p.name as name,
+                            img,
+                            harga,
+                            satuan,
+                            category_id,
+                            c.name as category
+                            ');
+        $this->db->from('product as p');
+        $this->db->join('category as c', 'p.category_id = c.id','left');
+        $this->db->where('c.id',$key);
 
+        $this->db->order_by('date','DESC');
+        $hasil=$this->db->get()->result();
+        return $hasil;
+    }
     public function show($id=null)
     {
         $this->db->select( 'p.id as id,

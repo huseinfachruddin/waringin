@@ -1,4 +1,4 @@
-_<?php
+<?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class _setting extends CI_Model 

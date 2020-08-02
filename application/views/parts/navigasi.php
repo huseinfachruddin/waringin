@@ -13,7 +13,7 @@
       </a>
     </li>
     <li class="nav-item ">
-      <a class="nav-link" href="<?=base_url('product/search')?>">
+      <a class="nav-link" href="<?=base_url('home/search')?>">
         <i class="material-icons">search</i>
         <p>Search</p>
       </a>
@@ -55,6 +55,12 @@
             <a class="dropdown-item" href="<?=base_url('auth/logout')?>">Log out</a>
           </div>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="<?=base_url('pemesanan')?>">
+            <i class="material-icons">shopping_cart</i>
+            cart saya
+          </a>
+        </li>
         <?php } ?>
       </ul>
     </div>
@@ -88,7 +94,12 @@
           </a>
         </li>
         <?php } else {?>
-
+          <li class="nav-item">
+          <a class="nav-link" href="<?=base_url('pemesanan')?>">
+            <i class="material-icons">shopping_cart</i>
+            cart saya
+          </a>
+        </li>
         <li class="nav-item dropdown">
           <a class="nav-link" href="javascript:;" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="material-icons">person</i>

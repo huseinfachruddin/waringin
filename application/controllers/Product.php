@@ -157,8 +157,9 @@ class Product extends CI_Controller
         $config = array(
                 'image_library' => 'GD2',
                 'source_image'  => './assets/images/'.$file_name,
-                'maintain_ratio'=> false,
-                'width'         => 500,
+                'maintain_ratio'=> true,
+                'quality'       => '50%',
+                'width'       => '200',
                 'new_image'     => './assets/images/tumb/'.$file_name
         );
  

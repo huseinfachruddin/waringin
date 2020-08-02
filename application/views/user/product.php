@@ -1,16 +1,14 @@
 
     <div class="content">
-        <div class="container-fluid mt-3">
+        <div class="container-fluid mt-3 card">
 
           <div class="row">
           <div class="col-md-4">
               <div class="card card-profile">
-                <div class="card">
+                <div class="">
 
                     <img id="blah" class="w-100" src="<?=base_url('assets/images/').$product['img']?>" />
  
-
->
               </div>
               </div>
             </div>
